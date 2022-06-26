@@ -18,13 +18,13 @@ CREATE TABLE TaskData.Tasks (
 
 SET SQL_SAFE_UPDATES = 0;
 
--- INSERT INTO TaskData.Task_Status (status_id, status_name) VALUES
---     (1, "status1"),
---     (2, "status2"),
---     (3, "status3");
+INSERT INTO TaskData.Task_Status (status_id, status_name) VALUES
+    (1, "status1"),
+    (2, "status2"),
+    (3, "status3");
 
--- INSERT INTO TaskData.Tasks (task_id, task_name, task_message, task_status_id, task_date) VALUES
---     (1, "Martelo de Thor", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, (NOW())),
---     (2, "Traje de encolhimento", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 2, (NOW())),
---     (3, "Escudo do Capitão América", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 3, (NOW()));
+INSERT INTO TaskData.Tasks (task_id, task_name, task_message, task_status_id, task_date) VALUES
+    (1, "Martelo de Thor", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, (NOW())),
+    (2, "Traje de encolhimento", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 2, (NOW())),
+    (3, "Escudo do Capitão América", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 3, (NOW()));
 
