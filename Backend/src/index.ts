@@ -1,10 +1,13 @@
 import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import 'express-async-errors';
+import Routes from './routes/router';
 
 const app = express();
 
 app.use(express.json());
+
+app.use(Routes);
 
 const PORT = 8000;
 
