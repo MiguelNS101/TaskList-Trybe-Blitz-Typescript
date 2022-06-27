@@ -27,6 +27,24 @@ class TaskService {
 
     this.model.remove(id);
   }
+
+  public async update(id: number, task: Task): Promise<void> {
+    const found = await this.model.getById(id);
+    if (!found) {
+      throw new NotFoundError('NotFoundError');
+    }
+
+    return this.model.update(id, task);
+  }
+
+  public async updateStatus(id: number, task: Task): Promise<void> {
+    const found = await this.model.getById(id);
+    if (!found) {
+      throw new NotFoundError('NotFoundError');
+    }
+
+    return this.model.updateStatus(id, task);
+  }
 }
 
 export default TaskService;

@@ -23,6 +23,22 @@ class TaskController {
 
     res.status(StatusCodes.OK).json({ message: 'Book deleted successfully' });
   };
+
+  public update = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const task = req.body;
+    await this.taskService.update(id, task);
+
+    res.status(StatusCodes.NO_CONTENT).end();
+  };
+
+  public updateStatus = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const task = req.body;
+    await this.taskService.updateStatus(id, task);
+
+    res.status(StatusCodes.NO_CONTENT).end();
+  };
 }
 
 export default TaskController;

@@ -52,4 +52,20 @@ export default class TaskModel {
       [id],
     );
   }
+
+  public async update(id: number, task: Task) {
+    const { taskName, taskMessage } = task;
+    await this.connection.execute(
+      'UPDATE Tasks SET task_name=?, task_message=? WHERE task_id=?',
+      [taskName, taskMessage, id],
+    );
+  }
+
+  public async updateStatus(id: number, task: Task) {
+    const { taskStatusId } = task;
+    await this.connection.execute(
+      'UPDATE Tasks SET task_status_id=? WHERE task_id=?',
+      [taskStatusId, id],
+    );
+  }
 }
