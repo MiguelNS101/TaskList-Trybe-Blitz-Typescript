@@ -1,4 +1,4 @@
-import { Pool } from 'mysql2/promise';
+import { Pool, ResultSetHeader } from 'mysql2/promise';
 import Task from '../interfaces/task.interface';
 
 export default class TaskModel {
@@ -15,13 +15,26 @@ export default class TaskModel {
   }
 
   public async getAllStatus(): Promise<Task[]> {
-    const result = await this.connection
-      .execute(`
+    const result = await this.connection.execute(`
       SELECT T.task_id, T.task_name, T.task_message, T.task_date, s.status_name
       FROM Tasks AS T
       INNER JOIN Task_Status AS s 
-      ON s.status_id = T.task_status_id`);
+      ON s.status_id = T.task_status_id
+      ORDER BY task_id;`);
     const [rows] = result;
     return rows as Task[];
+  }
+
+  public async create(task: Task): Promise<Task> {
+    const {
+      taskName, taskMessage,
+    } = task;
+    const result = await this.connection.execute<ResultSetHeader>(
+      'INSERT INTO Tasks (task_name, task_message) VALUES (?, ?)',
+      [taskName, taskMessage],
+    );
+    const [dataInserted] = result;
+    const { insertId } = dataInserted;
+    return { taskId: insertId, ...task };
   }
 }

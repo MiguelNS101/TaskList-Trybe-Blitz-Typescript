@@ -1,9 +1,9 @@
 interface Task {
-  task_id?: number;
-  task_name: string;
-  task_message: string;
-  task_status_id: number;
-  task_date: string;
+  taskId?: number;
+  taskName: string;
+  taskMessage: string;
+  taskStatusId: number;
+  taskDate: string;
 }
 
 export default Task;

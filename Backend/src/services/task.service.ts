@@ -13,6 +13,10 @@ class TaskService {
     const result = await this.model.getAllStatus();
     return result;
   }
+
+  public create(task: Task): Promise<Task> {
+    return this.model.create(task);
+  }
 }
 
 export default TaskService;

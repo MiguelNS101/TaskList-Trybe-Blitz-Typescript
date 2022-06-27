@@ -10,7 +10,7 @@ CREATE TABLE TaskData.Tasks (
     task_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     task_name VARCHAR(30) NOT NULL,
     task_message TEXT NOT NULL,
-    task_status_id INT NOT NULL,
+    task_status_id INT NOT NULL DEFAULT 1,
     task_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (task_status_id)
         REFERENCES TaskData.Task_Status (status_id)
