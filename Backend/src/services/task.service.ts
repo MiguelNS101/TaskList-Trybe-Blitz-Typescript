@@ -10,7 +10,7 @@ class TaskService {
   }
 
   public async getAll(): Promise<Task[]> {
-    const result = await this.model.getAll();
+    const result = await this.model.getAllStatus();
     return result;
   }
 }

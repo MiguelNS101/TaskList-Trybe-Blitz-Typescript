@@ -13,4 +13,15 @@ export default class TaskModel {
     const [rows] = result;
     return rows as Task[];
   }
+
+  public async getAllStatus(): Promise<Task[]> {
+    const result = await this.connection
+      .execute(`
+      SELECT T.task_id, T.task_name, T.task_message, T.task_date, s.status_name
+      FROM Tasks AS T
+      INNER JOIN Task_Status AS s 
+      ON s.status_id = T.task_status_id`);
+    const [rows] = result;
+    return rows as Task[];
+  }
 }
