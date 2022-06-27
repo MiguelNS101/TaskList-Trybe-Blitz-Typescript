@@ -12,4 +12,6 @@ router.get('/getTasks', taskController.getAll);
 router.get('/getStatus', statusController.getAll);
 router.post('/createTask', validationTask, taskController.create);
 
+router.delete('/deleteTask/:id', taskController.remove);
+
 export default router;

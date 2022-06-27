@@ -16,6 +16,13 @@ class TaskController {
     const taskCreated = await this.taskService.create(task);
     res.status(StatusCodes.CREATED).json(taskCreated);
   };
+
+  public remove = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    await this.taskService.remove(id);
+
+    res.status(StatusCodes.OK).json({ message: 'Book deleted successfully' });
+  };
 }
 
 export default TaskController;

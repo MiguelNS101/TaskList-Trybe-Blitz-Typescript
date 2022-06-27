@@ -37,4 +37,19 @@ export default class TaskModel {
     const { insertId } = dataInserted;
     return { taskId: insertId, ...task };
   }
+
+  public async getById(id: number): Promise<Task> {
+    const result = await this.connection
+      .execute('SELECT * FROM Tasks WHERE task_id=?', [id]);
+    const [rows] = result;
+    const [book] = rows as Task[];
+    return book;
+  }
+
+  public async remove(id: number) {
+    await this.connection.execute(
+      'DELETE FROM Tasks WHERE task_id=?',
+      [id],
+    );
+  }
 }
